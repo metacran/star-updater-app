@@ -1,8 +1,9 @@
 var got = require('got');
 var gh_got = require('gh-got');
 var cron_job = require('cron').CronJob;
+var meta = require('metacran-node');
 
-var last_key = null;
+var last_key = "igraph";
 var etags = { }
 
 var crandb = process.env.CRANDB_URL || 'http://crandb.r-pkg.org';
@@ -19,17 +20,7 @@ var job = new cron_job('*/2 * * * * *', function() {
 
     get_package(function(err, data) {
 	if (err) { console.log(err); return; }
-	var repo_field, repo;
-	if (data.BugReports &&
-		   data.BugReports.match(/https?:\/\/github\.com\//)) {
-	    repo_field = data.BugReports;
-	} else if (data.URL && data.URL.match(/https?:\/\/github\.com\//)) {
-	    repo_field = data.URL;
-	} else {
-	    repo_field = "";
-	}
-	repo = repo_field
-	    .replace(/^[\s\S]*https?:\/\/github\.com\/([^\/]+\/[^\/, ]+)\/?[\s\S]*$/m, '$1');
+	var repo = meta.get_gh_repo(data);
 
 	if (repo) {
 	    console.log("Updating ", data.Package, " repo: ", repo);

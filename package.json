@@ -10,6 +10,7 @@
 	"gh-got": "~1.1.0",
 	"got": "~3.2.0",
 	"cron": "~1.0.9",
-	"nano": "~6.1.2"
+	"nano": "~6.1.2",
+	"metacran-node": "git://github.com/metacran/metacran-node.git"
     }
 }
