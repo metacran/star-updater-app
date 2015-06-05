@@ -1,0 +1,15 @@
+{
+    "name": "star-updater-app",
+    "version": "1.0.0",
+    "private": true,
+    "scripts": {
+	"start": "node ./bin/scheduler"
+    },
+    "dependencies": {
+	"debug": "~2.2.0",
+	"gh-got": "~1.1.0",
+	"got": "~3.2.0",
+	"cron": "~1.0.9",
+	"nano": "~6.1.2"
+    }
+}
