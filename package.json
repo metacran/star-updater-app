@@ -5,6 +5,9 @@
     "scripts": {
 	"start": "node ./bin/scheduler"
     },
+    "engines": {
+      "node": "0.12.x"
+    },
     "dependencies": {
 	"debug": "~2.2.0",
 	"gh-got": "~1.1.0",
